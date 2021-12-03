@@ -16,8 +16,9 @@ SECRET_KEY = 'django-insecure-*yh+^e&lwi7(c9s49*e!$70gd8kp&9m==hgo6npckv!pp%5!61
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+DEBUG_PROPAGATE_EXCEPTIONS = True
 
-ALLOWED_HOSTS = ['ozzysmile.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['ozzysmile.herokuapp.com', '127.0.0.1','localhost']
 
 
 # Application definition
@@ -120,9 +121,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-#STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media/')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

@@ -1,0 +1,80 @@
+*{
+    margin:0;
+    padding: 0;
+}
+body{
+    margin:0;
+    padding: 0;
+}
+.header{
+    width: 100%;
+    height: 60px;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+z-index: 1000;
+}
+.hbox{
+    padding: 14px;
+    text-align:end;
+}
+.main-body{
+    margin-top: 0;
+    width: 100%;
+    height: 100vh;
+}
+.division-left{
+    float: left;
+    width: 25%;
+    height: 100%;
+    box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.75);
+}
+.content-holder-dl{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+.content-top-dl{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+.content-top-dl img{
+    border: 2px solid dodgerblue;
+    padding: 5px;
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+}
+.content-down-dl{
+    padding-top: 50px;
+}
+.dashboard-buttons{
+    list-style-type: none;
+}
+.dashboard-buttons li{
+    font-family: 'Arial';
+    font-weight: 600;
+    font-size: 18px;
+    width: 70%;
+    padding-left: 5px;
+}
+.dashboard-buttons li a{
+    text-decoration: none;
+    color: black;
+}
+.dashboard-buttons li a:hover{
+    color: dodgerblue;
+}
+.divison-right{
+    width: 73%;
+    float: right;
+}
+.content-holder-dr{
+    width: 100%;
+    padding: 5px;
+    height: 100vh;
+}

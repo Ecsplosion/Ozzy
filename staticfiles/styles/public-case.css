@@ -1,0 +1,45 @@
+.main{
+    display: block;
+}
+.right-section{
+    position: relative;
+}
+.c-video{
+    display: block;
+    position: absolute;
+}
+body{
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+.video-buttons{
+    list-style-type: none;
+}
+.video-buttons li{
+    margin-top: 5px;
+}
+.video-buttons li button{
+    background: none;
+    border: none;
+}
+.video-buttons li button img{
+    width: 60px;
+    height: 65px;
+}
+.comment-division{
+    margin-top: 20px;
+    float: left;
+    width: 100%;
+    height: auto;
+}
+#comment-button{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: none;
+    height: 40px;
+    background-color: #1c1b2e;
+    color: white;
+    padding: 3px;
+}
