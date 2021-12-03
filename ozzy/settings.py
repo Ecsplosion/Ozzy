@@ -78,7 +78,7 @@ DATABASES = {
         'NAME': 'ozzysmile',
         'USER':'postgres',
         'PASSWORD':'0047',
-        'HOST':'localhost'
+        'HOST':'ozzysmile.herokuapp.com'
     }
 }
 
