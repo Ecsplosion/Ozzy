@@ -78,7 +78,7 @@ DATABASES = {
         'NAME': 'postgresql-deep-17770',
         'USER':'postgres',
         'PASSWORD':'0047',
-        'HOST':'ozzysmile.herokuapp.com'
+        'HOST':'localhost'
     }
 }
 

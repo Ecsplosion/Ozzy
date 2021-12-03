@@ -63,3 +63,5 @@ def subservicepage(request, slug):
     article = OzzyService.objects.get(slug = slug)
     context = {'article':article, 'menu' : menu}
     return render(request, 'home/sub-services.html', context) 
+def dummypage(request):
+    return render(request,'home/faq.html')
