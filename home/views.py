@@ -3,12 +3,10 @@ from articles.models import Article, Update, OzzyService
 from articles.forms import ArticleForm
 from . models import CarouselImage
 #MODELS
-menu = OzzyService.objects.all()
 # Create your views here.
-article_list = []
-for x in Article.objects.all():
-    article_list.append(x)
+
 def homepage(request):
+    menu = OzzyService.objects.all()
     image_list = []
     print(CarouselImage.objects.all())
     updates = Update.objects.all()
@@ -21,6 +19,7 @@ def homepage(request):
     context = {'article':article, 'image_list': CarouselImage.objects.all(), 'updates': updates, 'menu': menu}
     return render(request,'home/homepage.html',context)
 def publications(request):
+    menu = OzzyService.objects.all()
     try:
         article = Article.objects.get(displayPage='publications')
        
@@ -32,6 +31,7 @@ def publications(request):
     context = {'article':article, 'menu': menu}
     return render(request, 'home/publications.html', context)
 def whatisozzy(request):
+    menu = OzzyService.objects.all()
     try:
         article = Article.objects.get(displayPage='whatisozzy')
     except:
@@ -42,6 +42,8 @@ def whatisozzy(request):
     context = {'article':article,'menu' : menu}
     return render(request, 'home/what-is-ozzy.html',context)
 def newspage(request, pk):
+    menu = OzzyService.objects.all()
+
     try:
         update = Update.objects.get(id=pk)
     except:
@@ -51,6 +53,8 @@ def newspage(request, pk):
     context = {'article': update,'menu' : menu}
     return render(request, 'home/newspage.html', context)
 def servicepage(request):
+    menu = OzzyService.objects.all()
+
     try:
         article = Article.objects.get(displayPage ='ozzyservices')
     except:
@@ -60,6 +64,8 @@ def servicepage(request):
     context= {'article': article,'menu' : menu}
     return render(request, 'home/services.html',context)
 def subservicepage(request, slug):
+    menu = OzzyService.objects.all()
+
     article = OzzyService.objects.get(slug = slug)
     context = {'article':article, 'menu' : menu}
     return render(request, 'home/sub-services.html', context) 
