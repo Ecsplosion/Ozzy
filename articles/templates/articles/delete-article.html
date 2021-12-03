@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_name %}articlepage{% endblock %}
+{% block page_title %}Delete Article{% endblock %}
+{% block article_heading %}{% endblock %}
+{% block article_briefing %}{% endblock %}
+{% block body %}
+<form action="{% url 'DeletePage' form.id %}" method="POST">
+    {% csrf_token %}
+    <div id="header-dashed">
+        <h2>{{form.title}}</h2>
+    </div>
+    <div id="description-box">
+        <p>{{form.description}}</p>
+    </div>
+<button class='btn btn-danger' type="submit">Delete</button>
+<a href="{% url 'CreatePage' %}"><button class='btn btn-info' >Cancel</button></a>
+</form>
+{% endblock %}

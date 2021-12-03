@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block page_title %}
+{{article.title}}
+{% endblock %}
+{% block extra-stuff %}
+{% endblock %}
+{% block article_heading %}
+{% if article %}
+{{article.title}}
+{% else %}
+Page Underconstruction
+{% endif %}
+{% endblock %}
+{% block article_briefing %}
+{{article.description|safe}}
+{% endblock %}
+{% block list_load %}
+{% include 'ozsc-list-items.html' %}
+{% endblock %}
+{% block page_sub_title %}{{article.title}}{% endblock %}

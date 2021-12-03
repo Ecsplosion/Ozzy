@@ -1,0 +1,1 @@
+web: gunicorn ozzy.wsgi --log-file -

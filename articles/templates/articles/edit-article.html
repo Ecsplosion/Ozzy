@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_name %}articlepage{% endblock %}
+{% block page_title %}Edit Article{% endblock %}
+{% block article_heading %}{% endblock %}
+{% block article_briefing %}{% endblock %}
+{% block body %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <div id="header-dashed">
+        {{form.media}}
+        {{form.displayPage}}
+        <h2>{{form.title}}</h2>
+    </div>
+    <div id="description-box">
+        <p>{{form.description}}</p>
+        
+    </div>
+<button class='btn btn-success' type="submit">Save</button>
+</form>
+{% endblock %}

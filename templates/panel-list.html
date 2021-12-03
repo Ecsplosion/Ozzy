@@ -1,0 +1,24 @@
+<li>
+<div  class="sub-list-items wioz-list-item" >
+    <a class="link" style="color: black;" href="{% url 'WhatIsOzzyPage' %}">What Is Ozzy?</a>
+    <ul class="dropdown-menu panel-lists .wioz-list" style="left: 183px;" id='what-is-ozzy'>
+      {% include 'wioz-list-items.html'%}
+    </ul>
+  </div>
+  </li>
+  <li>
+    <div  class="sub-list-items ozsc-list-item" >
+        <a class="link" style="color: black;" href="{% url 'ServicePage' %}">Ozzy Services</a>
+        <ul class="dropdown-menu panel-lists .wioz-list" style="left: 288px;" id='what-is-ozzy'>
+          {% include 'ozsc-list-items.html'%}
+        </ul>
+      </div>
+      </li>
+      <li>
+        <div  class="sub-list-items da-list-item" >
+            <a class="link" style="color: black;" href="{% url 'WhatIsOzzyPage' %}">Doctor's Area</a>
+            <ul class="dropdown-menu panel-lists .wioz-list" style="left: 388px;" id='what-is-ozzy'>
+              {% include 'da-list-items.html' %}
+            </ul>
+          </div>
+          </li>

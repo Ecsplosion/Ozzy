@@ -1,0 +1,29 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+{% block page_title %}
+Submit a Case
+{% endblock %}
+{% block body %}
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.media}}
+    {{form.title}}
+    <hr>
+    {{form.description}}
+    <div class="form-view-fields">
+    <p>General View</p>
+{{form.general_view}}
+<h3>Upper Occlusal</p>
+{{form.top_view}}
+<p>Lower Occlusal</p>
+{{form.bottom_view}}
+<p>Left View</p>
+{{form.left_view}}
+<p>Right View</p>
+{{form.right_view}}
+<p>Frontal View</p>
+{{form.front_view}}
+</div>
+    <input type="submit" value="Submit Case" name="name">
+</form>
+{% endblock %}

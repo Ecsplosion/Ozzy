@@ -1,0 +1,75 @@
+{% extends 'public-dashboard.html' %}
+{% load static %}
+{% block css_load %}
+<link rel="stylesheet" href="{% static 'styles/public-case.css' %}" class="css">
+{% endblock %}
+{% block main_body %}
+
+<div class="left-section">
+    <ul class="video-buttons">
+        <li><button id='front-view-button' class="video-button"><img src="{% static 'custom/front_button.png' %}"></button></li>
+        <li><button id="top-view-button" class="video-button"><img src="{% static 'custom/upper_button.png' %}"></button></li>
+        <li><button id="bottom-view-button" class="video-button"><img src="{% static 'custom/lower_button.png' %}"></button></li>
+        <li><button id="left-view-button" class="video-button"><img src="{% static 'custom/left_button.png' %}"></button></li>
+        <li><button id="right-view-button" class="video-button"><img src="{% static 'custom/right_button.png' %}"></button></li>
+    </ul>
+  </div>
+  <div class="right-section">
+    <div class="c-video">
+        <video src="{{case.top_view.url}}" class="video my-active" id="video-viewer"></video>
+        <script>
+          var right_view_url = '{{case.right_view.url}}';
+          var left_view_url = '{{case.left_view.url}}';
+          var  top_view_url = '{{case.top_view.url}}';
+          var bottom_view_url = '{{case.bottom_view.url}}'
+          var front_view_url = '{{case.front_view.url}}'
+        </script>
+        <script src="{% static 'JS/case-advanced.js' %}"></script>
+        <div class="controls">
+            <div class="orange-bar">
+                <div class="orange-juice"></div>
+            </div>
+            <div class="buttons">
+                <button id="play-pause">
+
+                </button>
+            </div>
+        </div>
+    </div>
+    
+  </div>
+  {% if case.user.username %}
+<h6 style="float: right; margin-top: 5px; color: white;">Case Posted  By : {{case.user.username}}</h6>
+{% endif %}
+  <div class="comment-division">
+    {% if request.user.is_authenticated %}
+  
+    <h3 style="color: white; text-align: center;">Comments</h3>
+        <hr style="color: rgb(238, 224, 224);">
+        <div class="comment-section">
+      <form style="margin-left: 30px;" action="" method="POST">
+            {% csrf_token %}
+            <div class="form-fields">
+            {{form.comment}}
+            <input type="submit" value="Comment" id="comment-button">
+            </div>
+            </form>
+            <br>
+          <ul class="comments" style="list-style: none;">
+            {% for x in comments %}
+            <li><div class="comment-holder">
+              <p style="color: rgb(233, 162, 10);">{{x.posted_by}}</p>
+              <p style="color: white;">{{x.comment}}</p>
+              <p style="color: white;">{{x.date_posted}}</p>
+            </div></li><hr style="color: white; width: 60%;">
+            {% endfor %}
+          </ul>
+        </div>
+        
+  </div>
+  {% else %}
+  <h3 style="color: white; text-align: center;">Login to See Comments</h3>
+  {% endif %}
+  
+</div>
+{% endblock %}

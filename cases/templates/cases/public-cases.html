@@ -1,0 +1,48 @@
+{% extends 'public-dashboard.html' %}
+{% load static %}
+{% block css_load %}
+<link rel="stylesheet" href="{% static 'styles/public-cases.css'%}" class="css">
+{% endblock %}
+{% block main_body %}
+<div class="sub_main">
+<div class="search-section">
+    <form action="" class="search-form">
+        <div class="input-box">
+            <input id="input-bar" type="text" class="input-bar" placeholder="Search..." onkeyup="search_list()">
+            <hr style="color: white;">
+        </div>
+    </form>
+</div>
+<div class="case-section">
+    
+<ul class="case-list" id="case-list">
+  
+    {% for x in case%}
+    
+    <li><a href="{% url 'PublicCasePage' x.id %}"><div class="case-button">
+        <h5>{{x.title}}</h5>
+        <p>{{x.description|safe}}</p>
+        <p>{{x.date_created}}</p>
+    </div></a></li>
+    {% endfor %}
+</ul>
+</div>
+<script>
+const  search_list = () => {
+    console.log('Working')
+    let filter = document.getElementById('input-bar').value.toUpperCase();
+    let ul = document.getElementById('case-list');
+    let li = ul.getElementsByTagName('li')
+    for(i=0; i<li.length;i++){
+        a = li[i].textContent;
+        if(a.toUpperCase().indexOf(filter)> -1){
+            li[i].style.display = '';
+        } else{
+            li[i].style.display = 'none';
+        }
+        
+    }
+}
+</script>
+</div>
+{% endblock %}

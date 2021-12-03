@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block page_title %}
+What is Ozzy
+{% endblock %}
+{% block extra-stuff %}
+{% endblock %}
+{% block article_heading %}
+{% if article %}
+{{article.title}}
+{% else %}
+Page Underconstruction
+{% endif %}
+{% endblock %}
+{% block article_briefing %}
+{{article.description|safe}}
+{% endblock %}
+{% block page_sub_title %}{{article.title}}{% endblock %}

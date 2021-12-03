@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css_load %}
+<link rel="stylesheet" href="{% static 'styles/home.css' %}" class="css">
+{% endblock %}
+{% block page_name %}homepage{% endblock %}
+{% block page_title %}OzzySmile Aligners{% endblock %}
+{% block page_sub_title %}{{article.title}}{% endblock %}
+
+{% block extra-stuff %}
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        {% for x in image_list|slice:"1:" %}
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{forloop.counter}}" aria-label="Slide {{forloop.counter}}"></button>
+        {% endfor %}
+      </div>
+    <div class="carousel-inner styled-carousel">
+      <div class="carousel-item active">
+        <img src="{{image_list.0.image.url}}" class="d-block w-100" alt="...">
+      </div>
+    {%for x in image_list|slice:"1:" %}
+    <div class="carousel-item">
+        <img src="{{x.image.url}}" class="d-block w-100" alt="...">
+      </div>
+    
+    {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+{% endblock %}
+{% block article_heading %}
+{% if article %}
+{{article.title}}
+{% else %}
+Page Underconstruction
+{% endif %}
+{% endblock %}
+{% block article_briefing %}
+{% if article %}
+{{article.description|safe}}
+{% else %}
+Page Underconstruction
+{% endif %}
+{% endblock %}
+{% block list_load %}
+{% include 'ozsc-list-items.html' %}
+{% endblock %}
+{% block update_load %}
+<div class="update-part">
+      <h5>Updates</h5>
+      <div class="update-content-part">
+          <ul class="update-list" id="vertical-ticker">
+            {% if updates %}
+            {% for x in updates %}
+            <li class="update-list-item"><a class="update-link" href="{% url 'NewsPage' x.id %}">{{x.title}}</a></li>
+            {% endfor %}
+            {% else %}
+            <li>No Latest Updates</li>
+            {% endif %}
+          </ul>
+      </div>
+</div>
+{% endblock %}
+{% block script_load %} 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>  
+<script type="text/javascript">
+  $(function(){
+  $('#vertical-ticker').totemticker({
+  row_height:'55px', // Height of each ticker row in PX
+  next:'#ticker-next', // ID of next button or link
+  previous:'#ticker-previous', // ID of previous button or link
+  stop:'#stop', // ID of stop button or link
+  start:'#start', // ID of start button or link
+  mousestop:true, // Stop while mouse is hovers over it
+  speed: 800, // Speed of transition animation (ms)
+  interval: 4000, // Time between change (ms)
+  max_items: 3// Maximum items to display 
+  });
+  });
+  </script>
+<script src="{% static 'JS/home.js' %}" ></script>
+
+<script type="text/javascript" src="{% static 'JS/jquery.totemticker.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,37 @@
+#header-dashed{
+    font-family: 'Myriad Pro';
+    color: black;
+    width: 90%;
+    height: 30px;
+    padding-bottom: 44px;
+    border-bottom: 1px dotted #777373;
+}
+#content-division-right{
+    display: none;
+}
+#description-box{
+    overflow: hidden;
+    max-height: 400px;
+    display: -webkit-box;
+    -webkit-line-clamp: 14;
+    -webkit-box-orient: vertical;
+}
+#article-name{
+    float: left;
+}
+#article-buttons{
+    float: right;
+}
+.create-buttons-list{
+    text-align: center;
+    width: 500px;
+    margin: 0 auto;
+    list-style-type: none;
+}
+.create-buttons-list li{
+    margin: 10px auto;
+}
+.create-buttons-list li button{
+    width: 200px;
+    color: white;
+}

@@ -1,0 +1,123 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+{% block page_title %}
+{{case.title}}
+{% endblock %}
+{% block css_load %}
+<link rel="stylesheet" href="{% static 'styles/case.css' %}" class="css">
+<link rel="stylesheet" href="{% static 'styles/video.css' %}" class="css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.7/plyr.min.css" />
+{% endblock %}
+{% block script_load %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.7/plyr.min.js"></script>
+
+<script src="{% static 'JS/video.js' %}"></script>
+{% endblock %}
+{% block body %}
+<h2>{{case.title}}</h2>
+<input type="hidden" value="{{case.id}}" name="case_id">
+<hr>
+<p>{{case.description|safe}}</p>
+<hr>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">Videos</button>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" style="padding:0px; margin:10px; width:100%; max-width:98%;height:100%">
+    <div class="modal-content" style="height:auto; overflow: auto; ">
+      <div class="container-fluid" style="height: 100%; padding: 18px; padding-top: 0;padding-bottom: 25px;background-color: #2e2d3f;">
+        <div class="header_modal">
+          <h3 style="color:white;margin-left: 60px;">OzzySmile Aligners</h3>
+        </div>
+        <div class="left-modal">
+        <!--<button type="button" id="general-view-button" class='my-button'>General View</button>-->
+        <button type="button" id="top-view-button" class='my-button'><img src="{% static 'custom/upper_button.png' %}"></button>
+        <button type="button" id="bottom-view-button" class='my-button'><img src="{% static 'custom/lower_button.png' %}"></button>
+        <button type="button" id="left-view-button"class='my-button'><img src="{% static 'custom/left_button.png' %}"></button>
+        <button type="button" id="right-view-button" class='my-button'><img src="{% static 'custom/right_button.png' %}"></button>
+        <button type="button" id="front-view-button"class='my-button'><img src="{% static 'custom/front_button.png' %}"></button>
+      </div>
+      <div class="right-modal" style="text-align: center;">
+         <div class="c-video">
+          <video src="{{case.top_view.url}}" class="video my-active" id="video-viewer"></video>
+          <script>
+            var right_view_url = '{{case.right_view.url}}';
+            var left_view_url = '{{case.left_view.url}}';
+            var  top_view_url = '{{case.top_view.url}}';
+            var bottom_view_url = '{{case.bottom_view.url}}'
+            var front_view_url = '{{case.front_view.url}}'
+          </script>
+          <script src="{% static 'JS/case-advanced.js' %}"></script>
+          <div class="controls">
+              <div class="orange-bar">
+                  <div class="orange-juice"></div>
+              </div>
+              <div class="buttons">
+                  <button id="play-pause">
+
+                  </button>
+              </div>
+          </div>
+      </div>
+       <!-- <video muted class="my-video my-active" id="top-view-video" playsinline controls data-poster="/path/to/poster.jpg">
+          <source src="{{case.top_view.url}}" type="video/mp4"></source>
+        </video>
+        <video muted class="my-video" id="bottom-view-video" playsinline controls data-poster="/path/to/poster.jpg">
+          <source src="{{case.bottom_view.url}}" type="video/mp4"></source>
+        </video>
+        <video muted class="my-video" id="left-view-video" playsinline controls data-poster="/path/to/poster.jpg">
+          <source src="{{case.left_view.url}}" type="video/mp4"></source>
+        </video>
+        <video muted class="my-video" id="right-view-video" playsinline controls data-poster="/path/to/poster.jpg">
+          <source src="{{case.right_view.url}}" type="video/mp4"></source>
+        </video>
+        <video muted class="my-video" id="front-view-video" playsinline controls data-poster="/path/to/poster.jpg">
+          <source src="{{case.front_view.url}}" type="video/mp4"></source>
+        </video> -->
+      </div>
+
+      <div class="lower-modal">
+        <h3 style="color: white; text-align: center;">Comments</h3>
+        <hr style="color: rgb(238, 224, 224);">
+        <div class="comment-section">
+          <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-fields">
+            {{comment_form.comment}}
+            <input type="submit" value="Comment">
+            </div>
+            </form>
+          <ul class="comments">
+            <li><div class="comment-holder">
+              <p style="color: rgb(233, 162, 10);">Zaid Bin Zaheer</p>
+              <p>Nice Video.</p>
+            </div></li>
+            {% if comments %}
+            {% for comment in comments %}
+            <li><div class="comment-holder">
+              <p style="color: rgb(233, 162, 10);">{{comment.posted_by}}</p>
+              <p>{{comment.comment}}</p>
+            </div></li>
+            {% endfor %}
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+<!--  <video  controls="controls" preload="preload">
+          <source src="{{case.general_view.url}}" type="video/mp4"></source>
+      </video>
+<p>Top View</p>
+{{case.top_view}}
+<p>Bottom View</p>
+{{case.bottom_view}}
+<p>Left View</p>
+{{case.left_view}}
+<p>Right View</p>
+{{case.right_view}}
+<p>Front View</p>
+{{case.front_view}}
+-->
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+{% block page_title %}
+My Cases
+{% endblock %}
+{% block body  %}
+{% for case in cases %}
+<li><a href="{% url 'CasePage' case.id %}">{{case.title}}</a></li>
+{% endfor %}
+{% endblock %}

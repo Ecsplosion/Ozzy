@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block page_title %}Doctor's Area{% endblock %}
+{% block article_heading %}Doctor's Login{% endblock %}
+{% block options_all %}{% endblock %}
+{% block article_briefing %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="form-fields">
+        <input type="text" value="username" name="username" required>
+        <input type="password" value="password" name="password" required>
+    </div>
+    <button type="submit" name="action" value="login">Submit</button>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" >Register With Us?</button>
+</form>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-my">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+                <div class="form-div credentials">
+                  {{form.first_name}}
+                  {{form.last_name}}
+                  {{form.username}}
+                  {{form.password1}}
+                  {{form.password2}}
+                  </div>
+                  <label for="profile_image">Upload Profile_Image</label>
+                  <input type="file" name="profile_image" required>
+            </div>
+        <div class="modal-footer ">
+          <button type="submit" class="btn btn-success modal-centered"  name="action" value='register'>Sign Up</button>
+        </div>
+      </form>
+      </div>
+      </div>
+      </div>
+  
+{% endblock %}

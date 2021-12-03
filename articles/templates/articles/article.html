@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_title %}Articles{% endblock %}
+{% block css_load %}
+    <link rel="stylesheet" href="{% static 'styles/article.css' %}" class="css">
+{% endblock %}
+{% block article_heading %}Articles{% endblock %}
+{% block article_briefing %}
+<ul class="create-buttons-list">
+<li><button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Show List of Articles</button></li>
+<li><button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#ImageModal">Carousel Images</button></li>
+<li><a class="super-link" href="{% url 'CreateArticlePage' %}"><button class="btn btn-info">Create a New Article</button></a></li>
+<li><a class="super-link" href="{% url 'PostUpdatePage' %}"><button class="btn btn-info">Post an Update</button></a></li>
+<li><a class="super-link" href="{% url 'CreateServicePage' %}"><button class="btn btn-info">Create
+Ozzy Service</button></a></li>
+</ul>
+<!--MODAL OF ARTICLES-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-my">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Articles</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="list-group list-group-flush">
+          {% for x in alist%}
+          <li class="list-group-item">
+            <div id="article-name">
+            <p style="font-size: 20px;">{{x}}</p>
+              </div>
+              <div id="article-buttons">
+                <a href="{% url 'EditPage' x.id %}"><button class="btn btn-primary">Edit</button></a>
+                <a href="{% url 'DeletePage' x.id %}"><button class="btn btn-danger">Delete</button></a>
+              </div>
+              </li>
+            {% endfor %}            
+          </ul>
+            <div class="modal-footer ">
+
+        </div>
+      </form>
+      </div>
+      </div>
+      </div></div>
+      <!--MODAL OF IMAGES-->
+      <div class="modal fade" id="ImageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-my">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Upload Carousel Images</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="carousel-images">Upload Image</label>
+                <input  name='carousel-images' id='carousel-image' multiple type="file">
+                <input type="submit" value="Submit">
+              </form>
+              <div class="modal-footer ">
+               </div>
+          </div>
+          </div>
+          </div>
+{% endblock %}
