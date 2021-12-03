@@ -1,1 +1,1 @@
-web: gunicorn ozzy.wsgi --log-file -
+web: python manage.py collectstatic --no-input; gunicorn ozzy.wsgi --log-file - --log-level debug
