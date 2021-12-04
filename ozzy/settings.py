@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'ozzy.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgresql-deep-17770',
+        'NAME': 'ozzysmileweb',
         'USER':'postgres',
         'PASSWORD':'0047',
         'HOST':'localhost'
