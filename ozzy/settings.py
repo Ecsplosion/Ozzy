@@ -15,7 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*yh+^e&lwi7(c9s49*e!$70gd8kp&9m==hgo6npckv!pp%5!61'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
 ALLOWED_HOSTS = ['ozzysmile.herokuapp.com', '127.0.0.1','localhost']
@@ -34,7 +34,8 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'articles.apps.ArticlesConfig',
     'cases.apps.CasesConfig',
-    'froala_editor'
+    'froala_editor',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

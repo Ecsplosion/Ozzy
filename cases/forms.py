@@ -15,7 +15,7 @@ class CaseForm(forms.ModelForm):
     bottom_view = forms.FileField(widget=FileInput(attrs={'name':'bottom_view'}))
     class Meta:
         model = Case
-        fields = ['title', 'description', 'general_view', 'front_view','right_view', 'left_view','top_view', 'bottom_view']
+        fields = ['title', 'description', 'general_view', 'front_view','right_view', 'left_view','top_view', 'bottom_view','upper_steps', 'lower_steps']
 
 class CommentForm(forms.ModelForm):
     comment = forms.CharField(widget=TextInput(attrs={'id': 'comment-box','rows':6,'cols':22, 'style': 'resize:none;width:50%;height:40px;border-top-left-radius:10px;border-bottom-left-radius:10px;border:none;',}))

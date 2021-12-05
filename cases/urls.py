@@ -8,5 +8,6 @@ urlpatterns = [
     path('case/<str:pk>/', views.casepage, name='CasePage'),
     path('case-model/', views.case_model, name='CaseModelPage'),
     path('case-detail/', views.publiccases, name='PubliCasesPage'),
-    path('case-detail/<str:pk>/', views.publiccase, name='PublicCasePage')
+    path('case-detail/<str:pk>/', views.publiccase, name='PublicCasePage'),
+    path('api/chart/data/<str:pk>/', views.ChartData.as_view(), name='chart-data')
 ]

@@ -1,11 +1,15 @@
 from django.http import request
 from django.shortcuts import redirect, render
+from django.contrib.auth.models import User
 from users.models import UserProfile
 from . models import Case, Comment
 from . forms import CaseForm, CommentForm
 from django.core.mail import send_mail
 from django.conf import settings
 from django.urls import resolve
+from django.http import JsonResponse
+from rest_framework.views import APIView
+from rest_framework.response import Response
 # Create your views here.
 def dashboard(request):
     active_user = request.user
@@ -100,3 +104,20 @@ def publiccase(request,pk):
         'form':commentForm
     }
     return render(request,'cases/public-case.html',context)
+class ChartData(APIView):
+    authentication_classes = []
+    permission_classes = []
+    try:
+        def get(self, request, format=None, *args,**kwargs):
+            case_object = Case.objects.get(id=kwargs['pk'])
+            upper_arches = case_object.upper_steps
+            lower_arches = case_object.lower_steps
+            default_items = [upper_arches,lower_arches]
+            labels = ["Upper", "Lower"]
+            data = {
+            'labels': labels,
+            'default': default_items,
+            }
+            return Response(data)
+    except Exception as e:
+        print(e)

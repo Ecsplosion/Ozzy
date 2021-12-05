@@ -7,11 +7,11 @@
 
 <div class="left-section">
     <ul class="video-buttons">
-        <li><button id='front-view-button' class="video-button"><img src="{% static 'custom/front_button.png' %}"></button></li>
-        <li><button id="top-view-button" class="video-button"><img src="{% static 'custom/upper_button.png' %}"></button></li>
-        <li><button id="bottom-view-button" class="video-button"><img src="{% static 'custom/lower_button.png' %}"></button></li>
-        <li><button id="left-view-button" class="video-button"><img src="{% static 'custom/left_button.png' %}"></button></li>
-        <li><button id="right-view-button" class="video-button"><img src="{% static 'custom/right_button.png' %}"></button></li>
+        <li><button id='front-view-button' class="video-button"><img src="{% static 'custom/Frontal.png' %}"></button></li>
+        <li><button id="top-view-button" class="video-button"><img src="{% static 'custom/upper.png' %}"></button></li>
+        <li><button id="bottom-view-button" class="video-button"><img src="{% static 'custom/Lower.png' %}"></button></li>
+        <li><button id="left-view-button" class="video-button"><img src="{% static 'custom/Left.png' %}"></button></li>
+        <li><button id="right-view-button" class="video-button"><img src="{% static 'custom/Right.png' %}"></button></li>
     </ul>
   </div>
   <div class="right-section">
@@ -41,6 +41,87 @@
   {% if case.user.username %}
 <h6 style="float: right; margin-top: 5px; color: white;">Case Posted  By : {{case.user.username}}</h6>
 {% endif %}
+<div class="char-section">
+  <canvas id="myChart" style=" width: 94%;
+  height: 150px;margin-left: 85px;"></canvas>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.1/dist/chart.min.js"></script>
+{% csrf_token %}
+<script>
+ var csrftoken = $('[name="csrfmiddlewaretoken"]').val();
+var endpoint = '{% url "chart-data" case.id %}'
+    var defaultData = []
+    var labels = []
+    $.ajax({
+        method : "GET",
+        url: endpoint,
+        success: function(data){
+            labels = data.labels,
+            defaultData = data.default
+            set_chart()
+        },
+        error: function(error_data){
+            console.log("error")
+            console.log(error_data)
+        }
+    })
+const set_chart = () => {
+    //Chart Start
+    const data = {
+      labels: labels,
+      datasets: [{
+        label: 'Arches',
+        data: defaultData,
+        'csrfmiddlewaretoken': csrftoken,
+        backgroundColor: [
+          'rgba(255, 26, 104, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(0, 0, 0, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 26, 104, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(0, 0, 0, 1)'
+        ],
+        borderWidth: 1
+      }]
+    };
+
+    // config 
+    const config = {
+      type: 'bar',
+      data,
+      options: {
+        indexAxis : 'y',
+        responsive : false,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    };
+
+    // render init block
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+    //Chart END
+}
+
+  
+
+</script>
+</div>
   <div class="comment-division">
     {% if request.user.is_authenticated %}
   

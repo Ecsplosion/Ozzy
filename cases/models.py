@@ -18,6 +18,8 @@ class Case(models.Model):
     bottom_view = models.FileField(null=True,validators=[FileExtensionValidator(allowed_extensions=['MOV','avi','mp4','webm','mkv', 'WMV'])])
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     id = models.UUIDField(default=uuid.uuid4, primary_key=True,editable=False,unique=True)
+    upper_steps = models.IntegerField(default=0, blank=True,null=True)
+    lower_steps = models.IntegerField(default=0, blank=True,null=True)
     def __str__(self):
         return self.title
 class Comment(models.Model):
