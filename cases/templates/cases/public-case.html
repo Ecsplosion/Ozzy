@@ -43,7 +43,7 @@
 {% endif %}
 <div class="char-section">
   <canvas id="myChart" style=" width: 94%;
-  height: 150px;margin-left: 85px;"></canvas>
+  height: 100px;margin-left: 85px;"></canvas>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.1/dist/chart.min.js"></script>
 {% csrf_token %}
@@ -70,26 +70,15 @@ const set_chart = () => {
     const data = {
       labels: labels,
       datasets: [{
-        label: 'Arches',
+        label: null,
         data: defaultData,
         'csrfmiddlewaretoken': csrftoken,
         backgroundColor: [
-          'rgba(255, 26, 104, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(0, 0, 0, 0.2)'
+          'rgb(149, 158, 173)',
+     
         ],
         borderColor: [
-          'rgba(255, 26, 104, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
-          'rgba(0, 0, 0, 1)'
+          'rgb(149, 158, 173)',
         ],
         borderWidth: 1
       }]
@@ -102,13 +91,23 @@ const set_chart = () => {
       options: {
         indexAxis : 'y',
         responsive : false,
+        
+        plugins :{
+          legend:{
+            display: false,
+            labels: {
+                    color: 'rgba(255, 255, 255,1)'
+            }
+        },
         scales: {
           y: {
             beginAtZero: true
           }
         }
       }
+    }
     };
+  
 
     // render init block
     const myChart = new Chart(
