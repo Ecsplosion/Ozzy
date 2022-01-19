@@ -4,6 +4,7 @@ urlpatterns = [
     path('faq/', views.dummypage),
     path('',views.homepage, name='HomePage'),
     path('user/', include('users.urls')),
+    path('viewer/', include('viewer.urls')),
     path('article/', include('articles.urls')),
     path('dashboard/', include('cases.urls')),
     path('publications/', views.publications, name='PublicationsPage'),

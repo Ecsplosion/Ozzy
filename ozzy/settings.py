@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'articles.apps.ArticlesConfig',
     'cases.apps.CasesConfig',
+    'viewer.apps.ViewerConfig',
     'froala_editor',
     'rest_framework'
 ]

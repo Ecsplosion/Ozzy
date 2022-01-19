@@ -1,0 +1,123 @@
+body{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(46, 43, 43);
+}
+ul{
+    margin: 0;
+    padding: 0;
+  }
+ 
+  #scene-canvas{
+    border : 1px solid ;
+    outline: none;
+  max-width: 1050px;
+    height: 500px;
+    max-height: 500px;
+  
+    position: absolute;
+    top: 40px;
+    right: 100px;
+  }
+  .right-panel{
+    position: absolute;
+    max-width: 100px;
+    height: 100vh;
+    right: 0;
+  }
+  .left-panel{
+    position: absolute;
+    max-width: 100px;
+    height: 100vh;
+    width: 100px;
+    left: 0;
+  }
+  *{
+    overflow: hidden;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+ 
+  .header{
+    width: 100%;
+    text-align: center;
+    color: white;
+    height: 30px;
+  }
+  .animation-control-button{
+    width: 10%;
+    margin: 0 auto;
+  }
+  .animation-control-button li{
+    list-style: none;
+    float: left;
+  }
+  .camera-button{
+    background: none;
+    border: none;
+  }
+  .camera-button img{
+    width: 80px;
+    height:50px;
+    background: none;
+    border: none;
+  }
+  .left-panel ul{
+    width: 92px;
+    margin-top: 2px;
+  }
+  .left-panel ul li{
+    margin-bottom: 5px;
+  }
+  .left-panel ul li hr{
+    width: 80%;
+    color: #efefef;
+    font-size: 1px;
+    margin: 0 auto;
+  }
+  #progress-box{
+ 
+    height: auto;
+    position: absolute;
+      bottom: 15px;
+      z-index: 10000000;
+      width: auto;
+  }
+  #progress-holder{
+    position: relative;
+    width: 100%;
+    background-color: rgb(46, 43, 43);
+    z-index: 500;
+    height: 5px;
+  }
+  #progress-bar{
+  
+    z-index: 1000;
+    border: none;
+    width: 0%;
+    background-color: orangered;
+    height: 100%;
+  }
+  .visibility-control-area{
+    color: white;
+    margin-top: 10px;
+    height: 40px;
+    width: 87px;
+    margin-left: 5px;
+  }
+  .showUp label,.showLow label{
+    margin-top: 2px;
+  }
+  #playback-button{
+    background: none;
+    border: none;
+    content: url('./play_button.png');
+  }
+  .pause:before{
+    content: url('./pause_button.png');
+  }
+  .play:before{
+    content: url('./play_button.png');
+  }
+  .container-fluid{
+    max-width: 1366px;
+  }

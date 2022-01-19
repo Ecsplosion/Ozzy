@@ -1,0 +1,74 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'styles/viewer.css' %}" class="css">
+    <title>Ozzy Viewer</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+        <div class="header">
+          OzzySmile
+        </div>
+        <div class="left-panel" style="max-width: 100px;">
+          <ul>
+            
+            <li><button id="frontal_view" class="camera-button"><img src="{% static 'media/viewer_buttons/frontal.jpg' %}" ></button><hr></li>
+            <li><button id="left_view" class="camera-button"><img src="{% static 'media/viewer_buttons/left.jpg' %}" ></button><hr></li>
+              <li><button id="overjet_view" class="camera-button"><img src="{% static 'media/viewer_buttons/overjet.jpg' %}" ></button><hr></li>
+                <li><button id="right_view" class="camera-button"><img src="{% static 'media/viewer_buttons/right.jpg' %}" >  </button><hr></li>
+               
+                  <li><button id="upper_view" class="camera-button"><img src="{% static 'media/viewer_buttons/upper.jpg' %}"" ></button><hr></li>
+                  <li><button id="lower_view" class="camera-button"><img style="transform: scaleY(-1);" src="{% static 'media/viewer_buttons/upper.jpg' %}" ></button><hr></li>
+            </li>
+          </ul>  
+        </div>
+        <canvas id="scene-canvas">
+    
+      
+        </canvas>
+        <script>
+            
+            var upperModel = "{% static 'media/sample/Upper24fps.glb' %}"
+            var lowerModel = "{% static 'media/sample/Lower24fps.glb' %}"
+        </script>
+  <script src="{% static 'JS/test.js' %}" type="module">
+      import { TWEEN } from '{% static "JS/tween.module.min.js" %}'
+    </script>
+  <!--STUTTER FIX IS IN BINGO.JS-->
+    
+        <div class="right-panel" style="padding-right:5px">
+          <div class="visibility-control-area">
+          <div class="showUp"  style="max-width: 105px;">
+          <label style="float: right; font-size: 11px;" for="show-upper">Show Upper</label>
+          <input style='float: left; width: 12px;'type="checkbox" id='show-upper'value="show-upper" name="show-upper" >
+          </div>
+      
+          <div class="showLow" style="max-width: 105px;">
+          <label style="float: right;font-size: 11px;" for="show-lower">Show Lower</label>
+          <input style='float:left; width: 12px;'type="checkbox" id='show-lower' value="show-lower" name="show-lower" >
+            </div>
+          </div>
+        </div>
+        <div id="progress-box" style="width: 99%; max-width: 99%; ">
+          <ul class="animation-control-button">
+            <li><button style="z-index: 100000;" id="playback-button" class="play"></button></li>
+            </ul>
+          <div id="progress-holder" style="max-width: 100%; width: 100%;">
+            <div id="progress-bar" >
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+     </body>
+</html>
