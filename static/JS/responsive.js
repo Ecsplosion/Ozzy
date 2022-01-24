@@ -6,24 +6,40 @@ const my_canvas = document.getElementById("scene-canvas")
 const canvas_holder = document.getElementById("cholder")
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 
-    75, cholder.width / cholder.height,
+    75, window.innerWidth / window.innerHeight,
      0.1, 1000 );
 
 const renderer = new THREE.WebGLRenderer({canvas:my_canvas});
-renderer.setSize( cholder.width, cholder.height );
+renderer.setSize( window.innerWidth, window.innerHeight );
 cholder.appendChild( renderer.domElement );
 const geometry = new THREE.BoxGeometry();
 const directionalLight = new THREE.DirectionalLight()
 scene.add(directionalLight)
-const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-const cube = new THREE.Mesh( geometry, material );
-scene.add( cube );
+
 scene.background = new THREE.Color('white')
 camera.position.z = 5;
+var loader = new GLTFLoader()
+loader.load(lowerModel, function ( gltf ) {
+    gltf.scene.scale.set(0.1,0.1,0.1)
+    gltf.scene.position.set(0,0,0)
+      gltf.scene.rotation.set(0, Math.PI * 2, 0)
+    scene.add( gltf.scene );
+  
+   var   mixer_up = new THREE.AnimationMixer( gltf.scene );
+    gltf.animations.forEach( ( clip ) => {
+    
+    var  duration = clip.duration + 2
+      let animation =  mixer_up.clipAction( clip );
+          mixer_up.addEventListener('finished', function(){
+          animation.timeScale = 0
+        })
+        animation.play()
+    })
+
+  } );
 function animate() {
 	requestAnimationFrame( animate );
-	cube.rotation.x += 0.01;
-cube.rotation.y += 0.01;
+	
     renderer.render( scene, camera );
 }
 window.addEventListener( 'resize', onWindowResize, false );
@@ -39,6 +55,6 @@ function onWindowResize(){
     camera.updateProjectionMatrix();
 
     renderer.setSize( window.innerWidth, window.innerHeight );
-
+    renderer.render( scene, camera );
 }
 animate();

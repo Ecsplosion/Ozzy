@@ -49,6 +49,11 @@
         </div>
         </div>
     </div>
-    <script src="{% static 'JS/responsive.js' %}" type="module" ></script>
+    <script>
+      var lowerModel = "{% static 'media/sample/Lower24fps.glb' %}"
+      
+      var upperModel = "{% static 'media/sample/Upper24fps.glb' %}"
+    </script>
+    <script src="{% static 'JS/test.js' %}" type="module" ></script>
 </body>
 </html>

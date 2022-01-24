@@ -6,6 +6,7 @@ import { TWEEN } from 'https://cdn.jsdelivr.net/npm/three@0.118.1/examples/jsm/l
 //Button Controls
 const progressHolder= document.getElementById('progress-holder')
 const progressBar = document.getElementById('progress-bar')
+const canvas_holder = document.getElementById("cholder")
 const my_canvas = document.getElementById('scene-canvas')
 const showUpperRadio = document.getElementById('show-upper')
 const showLowerRadio = document.getElementById('show-lower')
@@ -36,13 +37,7 @@ var visiblity_control, animation_control;
 var isPlaying = false
 
 var hasFinished = false;
-
 //EventListeners
-
-
-
-
-
 function showUpper(){
 if(showUpperRadio.checked){
     upper_isHidden = false
@@ -76,13 +71,10 @@ const camera = new THREE.PerspectiveCamera(
     0.5,
     1000
 )
-
- 
-
 const renderer = new THREE.WebGLRenderer({canvas: my_canvas})
 renderer.outputEncoding = THREE.sRGBEncoding
 renderer.setSize(window.innerWidth, window.innerHeight)
-document.body.appendChild(renderer.domElement)
+canvas_holder.appendChild(renderer.domElement)
 
 const controls = new OrbitControls(camera, renderer.domElement)
 controls.enableDamping = true
@@ -257,23 +249,8 @@ loader.load(lowerModel, function ( gltf ) {
         // }
 
        }
-       progressHolder.addEventListener('click', function(e){
-        var progressTime = (e.offsetX/ progressBar.offsetWidth) * clip.duration;
-        animation.time = progressTime;
-  
-       })
-       var progressInt = setInterval(progressInc, 1)
-       function progressInc(){
-         if(isPlaying && !hasFinished){
-             if(animation.timeScale !=0){
-           
-           progressBar.style.width = meth * 100 + '%'
-         }
-        }
-         if(hasFinished && isPlaying){
-           progressBar.style.width = 0
-         }
-       }
+       
+      
        function animation_play(){
         if(isPlaying && !hasFinished){
           playmyAnim()
