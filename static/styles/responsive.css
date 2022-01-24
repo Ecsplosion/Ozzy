@@ -67,11 +67,11 @@ header h2{
 #playback-button{
     background: none;
     border: none;
-    content: url('./resources/play_button.png');
+    content: url('./play_button.png');
   }
   .pause:before{
-    content: url('./resources/pause_button.png');
+    content: url('./pause_button.png');
   }
   .play:before{
-    content: url('./resources/play_button.png');
+    content: url('./play_button.png');
   }
