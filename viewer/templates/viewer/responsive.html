@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3d Viewer</title>
+    <link rel="stylesheet" href="{% static 'styles/responsive.css' %}" class="css">
+</head>
+<body>
+    <header>
+        <h2>OzzySmile</h2>
+    </header>
+    <div class="container">
+        <div class="canvas-holder" id="cholder">
+            <canvas id="scene-canvas">
+
+            </canvas>
+        </div>
+        <div class="lower-pane">
+        <div class="button-holder">
+            <ul class="camera-button-list">
+      
+                <li><button id="frontal_view" class="camera-button"><img src="{% static 'media/viewer_buttons/frontal.jpg' %}"></button></li>
+                <li><button id="left_view" class="camera-button"><img src="{% static 'media/viewer_buttons/left.jpg' %}"  ></button></li>
+                    <li><button id="right_view" class="camera-button"><img src="{% static 'media/viewer_buttons/right.jpg' %}" >  </button></li>
+                      <li><button id="upper_view" class="camera-button"><img src="{% static 'media/viewer_buttons/upper.jpg' %}"  ></button></li>
+                      <li><button id="lower_view" class="camera-button"><img style="transform: scaleY(-1);" src="{% static 'media/viewer_buttons/upper.jpg' %}"  ></button></li>
+                </li>
+              </ul> <br>
+              <div class="lower-menu">
+              <div class="play-pause-menu">
+                <button style="z-index: 100000;" id="playback-button" class="play"></button>
+              </div>
+              <ul class="visibility-control">
+ 
+                  <li> <div class="showUp"  style="max-width: 80px;">
+                    <label style="float: right; font-size: 20px; color: white;" for="show-upper">Upper</label>
+                    <input style='float: left; width: 18px; margin-top: 5px;'type="checkbox" id='show-upper'value="show-upper" name="show-upper" >
+                    </div>
+                </li>
+                  <li> <div class="showLow" style="max-width: 80px;">
+                    <label style="float: right;font-size: 20px; color: white;" for="show-lower">Lower</label>
+                    <input style='float:left; width: 18px;margin-top: 5px;'type="checkbox" id='show-lower' value="show-lower" name="show-lower" >
+                      </div></li>
+              </ul>
+        </div>
+        </div>
+        </div>
+    </div>
+    <script src="{% static 'JS/responsive.js' %}" type="module" ></script>
+</body>
+</html>
