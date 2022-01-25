@@ -8,6 +8,9 @@ const progressHolder= document.getElementById('progress-holder')
 const progressBar = document.getElementById('progress-bar')
 const canvas_holder = document.getElementById("cholder")
 const my_canvas = document.getElementById('scene-canvas')
+console.log(canvas_holder.offsetWidth + 'x' + canvas_holder.offsetHeight)
+console.log(my_canvas.offsetWidth, my_canvas.offsetHeight)
+my_canvas.setAttribute("style", `max-height:${canvas_holder.offsetHeight}; max-width:${canvas_holder.offsetWidth} `)
 const showUpperRadio = document.getElementById('show-upper')
 const showLowerRadio = document.getElementById('show-lower')
 const playbackButton = document.getElementById('playback-button')
@@ -348,9 +351,9 @@ loader.load(lowerModel, function ( gltf ) {
 
 window.addEventListener('resize', onWindowResize, false)
 function onWindowResize() {
-    //  camera.aspect = window.innerWidth / window.innerHeight
-    //  camera.updateProjectionMatrix()
-    // renderer.setSize(window.innerWidth, window.innerHeight)
+     camera.aspect = window.innerWidth / window.innerHeight
+     camera.updateProjectionMatrix()
+    renderer.setSize(window.innerWidth, window.innerHeight)
     render()
 }
 function animate() {
