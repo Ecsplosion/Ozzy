@@ -69,13 +69,13 @@ scene.background = new THREE.Color('black')
 clock = new THREE.Clock()
 const camera = new THREE.PerspectiveCamera(
     75,
-    my_canvas.width/ my_canvas.height,
+    cholder.offsetWidth/ cholder.offsetHeight,
     0.5,
     1000
 )
 const renderer = new THREE.WebGLRenderer({canvas: my_canvas})
 renderer.outputEncoding = THREE.sRGBEncoding
-renderer.setSize(my_canvas.offsetWidth, my_canvas.offsetHeight)
+renderer.setSize(cholder.offsetWidth, cholder.offsetHeight)
 canvas_holder.appendChild(renderer.domElement)
 
 const controls = new OrbitControls(camera, renderer.domElement)
@@ -358,9 +358,10 @@ window.addEventListener('resize', onWindowResize, false)
 function onWindowResize() {
   
 
-  camera.aspect = my_canvas.offsetWidth / my_canvas.offsetHeight
-     camera.updateProjectionMatrix()
-    renderer.setSize(my_canvas.offsetWidth, my_canvas.offsetHeight)
+  camera.aspect = cholder.offsetWidth / cholder.offsetHeight;
+  camera.updateProjectionMatrix();
+
+  renderer.setSize( cholder.offsetWidth, cholder.offsetHeight );
     renderer.setPixelRatio(window.devicePixelRatio);
     render()
 }
