@@ -45,7 +45,7 @@ function animate() {
 window.addEventListener( 'resize', onWindowResize, false );
 
 function onWindowResize(){
-
+  console.log(window.innerWidth + 'x' + window.innerHeight)
     // camera.aspect = cholder.width / cholder.height;
     // camera.updateProjectionMatrix();
 

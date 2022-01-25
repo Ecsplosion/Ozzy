@@ -10,7 +10,6 @@ const canvas_holder = document.getElementById("cholder")
 const my_canvas = document.getElementById('scene-canvas')
 console.log(canvas_holder.offsetWidth + 'x' + canvas_holder.offsetHeight)
 console.log(my_canvas.offsetWidth, my_canvas.offsetHeight)
-my_canvas.setAttribute("style", `max-height:${canvas_holder.offsetHeight}; max-width:${canvas_holder.offsetWidth} `)
 const showUpperRadio = document.getElementById('show-upper')
 const showLowerRadio = document.getElementById('show-lower')
 const playbackButton = document.getElementById('playback-button')
@@ -76,7 +75,7 @@ const camera = new THREE.PerspectiveCamera(
 )
 const renderer = new THREE.WebGLRenderer({canvas: my_canvas})
 renderer.outputEncoding = THREE.sRGBEncoding
-renderer.setSize(window.innerWidth, window.innerHeight)
+renderer.setSize(my_canvas.offsetWidth, my_canvas.offsetHeight)
 canvas_holder.appendChild(renderer.domElement)
 
 const controls = new OrbitControls(camera, renderer.domElement)
@@ -348,12 +347,21 @@ loader.load(lowerModel, function ( gltf ) {
     } );
 
   } );
-
+  
+  
+// cholder.addEventListener('resize', function(){ 
+//   my_canvas.setAttribute("style", `max-height:${canvas_holder.offsetHeight}; max-width:${canvas_holder.offsetWidth} `);
+//   console.log('Window Resized')
+// }
+//)
 window.addEventListener('resize', onWindowResize, false)
 function onWindowResize() {
-     camera.aspect = window.innerWidth / window.innerHeight
+  
+
+  camera.aspect = my_canvas.offsetWidth / my_canvas.offsetHeight
      camera.updateProjectionMatrix()
-    renderer.setSize(window.innerWidth, window.innerHeight)
+    renderer.setSize(my_canvas.offsetWidth, my_canvas.offsetHeight)
+    renderer.setPixelRatio(window.devicePixelRatio);
     render()
 }
 function animate() {
