@@ -10,6 +10,7 @@ body{
     padding: 0;
 }
 header{
+    z-index: 200;
     border-bottom: 2px solid white;
     height: 60px;
     position: fixed;
@@ -41,15 +42,17 @@ header h2{
     background-color: rgb(16, 30, 68);
 }
 .camera-button img{
-    width: 52px;
-    height: 52px;
+    width: 30px;
+    height: 30px;
 }
 .camera-button-list{
     list-style-type: none;
+    width: 16   0px;
+    margin: 0 auto;
 }
 .camera-button-list li{
     float:  left;
-    margin: 0 10px;
+    margin: 0 8px;
 }
 .lower-menu{
     width: 90%;
@@ -77,9 +80,12 @@ header h2{
   .play:before{
     content: url('./play_button.png');
   }
-  @media only screen and (min-width: 780px) {
-
+  @media only screen and (min-width: 768px) {
+    .container{
+        margin-top: 70px;
+    }
     .canvas-holder{
+
         height: 80%;
         width: 80%;
         margin-left: 10px;
