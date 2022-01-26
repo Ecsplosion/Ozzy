@@ -13,6 +13,8 @@ console.log(my_canvas.offsetWidth, my_canvas.offsetHeight)
 const showUpperRadio = document.getElementById('show-upper')
 const showLowerRadio = document.getElementById('show-lower')
 const playbackButton = document.getElementById('playback-button')
+const responsivePane = document.getElementById('responsive-pane');
+
 showUpperRadio.checked =true
 showLowerRadio.checked =true
 showUpperRadio.addEventListener('click', function(){
@@ -354,10 +356,18 @@ loader.load(lowerModel, function ( gltf ) {
 //   console.log('Window Resized')
 // }
 //)
+function responsewrtwidth(){
+  if(window.innerWidth >= 768){
+    responsivePane.className = 'right-pane'
+  } else {
+    responsivePane.className = 'lower-pane'
+  }
+}
+responsewrtwidth()
 window.addEventListener('resize', onWindowResize, false)
 function onWindowResize() {
+  responsewrtwidth()
   
-
   camera.aspect = cholder.offsetWidth / cholder.offsetHeight;
   camera.updateProjectionMatrix();
 

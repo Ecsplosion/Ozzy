@@ -18,7 +18,7 @@
 
             </canvas>
         </div>
-        <div class="lower-pane">
+        <div class="lower-pane" id="responsive-pane">
         <div class="button-holder">
             <ul class="camera-button-list">
       
@@ -29,10 +29,11 @@
                       <li><button id="lower_view" class="camera-button"><img style="transform: scaleY(-1);" src="{% static 'media/viewer_buttons/upper.jpg' %}"  ></button></li>
                 </li>
               </ul> <br>
-              <div class="lower-menu">
-              <div class="play-pause-menu">
+              <div class="lower-menu" >
+                   <div class="play-pause-menu">
                 <button style="z-index: 100000;" id="playback-button" class="play"></button>
               </div>
+           <hr>
               <ul class="visibility-control">
  
                   <li> <div class="showUp"  style="max-width: 80px;">
@@ -45,6 +46,7 @@
                     <input style='float:left; width: 18px;margin-top: 5px;'type="checkbox" id='show-lower' value="show-lower" name="show-lower" >
                       </div></li>
               </ul>
+           
         </div>
         </div>
         </div>
