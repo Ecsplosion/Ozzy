@@ -1,15 +1,24 @@
 //import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.114/build/three.module.js';
+
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.118/build/three.module.js';
+import { DRACOLoader } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/DRACOLoader.js';
 import {OrbitControls} from 'https://cdn.jsdelivr.net/npm/three@0.118/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.118.1/examples/jsm/loaders/GLTFLoader.js';
 import { TWEEN } from 'https://cdn.jsdelivr.net/npm/three@0.118.1/examples/jsm/libs/tween.module.min.js'
 //Button Controls
+const upperBar = document.getElementById('upper-loader');
+const lowerBar = document.getElementById('lower-loader');
 const progressHolder= document.getElementById('progress-holder')
 const progressBar = document.getElementById('progress-bar')
+const canvas_holder = document.getElementById("cholder")
 const my_canvas = document.getElementById('scene-canvas')
+console.log(canvas_holder.offsetWidth + 'x' + canvas_holder.offsetHeight)
+console.log(my_canvas.offsetWidth, my_canvas.offsetHeight)
 const showUpperRadio = document.getElementById('show-upper')
 const showLowerRadio = document.getElementById('show-lower')
 const playbackButton = document.getElementById('playback-button')
+const responsivePane = document.getElementById('responsive-pane');
+
 showUpperRadio.checked =true
 showLowerRadio.checked =true
 showUpperRadio.addEventListener('click', function(){
@@ -36,13 +45,7 @@ var visiblity_control, animation_control;
 var isPlaying = false
 
 var hasFinished = false;
-
 //EventListeners
-
-
-
-
-
 function showUpper(){
 if(showUpperRadio.checked){
     upper_isHidden = false
@@ -65,24 +68,21 @@ let fps = 25
 let seconds = 2
 let interval = 1/fps;
 var animation_speed = 1/15
-scene.background = new THREE.Color('black')
+scene.background = new THREE.Color('#e8e4e1')
 // const light = new THREE.SpotLight()
 // light.position.set(20, 20, 20)
 // scene.add(light)
 clock = new THREE.Clock()
 const camera = new THREE.PerspectiveCamera(
     75,
-    my_canvas.width/ my_canvas.height,
+    cholder.offsetWidth/ cholder.offsetHeight,
     0.5,
     1000
 )
-
- 
-
 const renderer = new THREE.WebGLRenderer({canvas: my_canvas})
 renderer.outputEncoding = THREE.sRGBEncoding
-renderer.setSize(window.innerWidth, window.innerHeight)
-document.body.appendChild(renderer.domElement)
+renderer.setSize(cholder.offsetWidth, cholder.offsetHeight)
+canvas_holder.appendChild(renderer.domElement)
 
 const controls = new OrbitControls(camera, renderer.domElement)
 controls.enableDamping = true
@@ -205,8 +205,12 @@ playbackButton.addEventListener("click", function(){
 
    
 })
-camera.position.set(0,0,-142)
+const dracoLoader = new DRACOLoader();
 var loader = new GLTFLoader()
+dracoLoader.setDecoderPath( utils + 'draco/' );
+loader.setDRACOLoader( dracoLoader );
+camera.position.set(0,0,-142)
+
 loader.load(lowerModel, function ( gltf ) {
     visiblity_control = setInterval(hideLower, 1000) 
     gltf.scene.scale.set(0.1,0.1,0.1)
@@ -257,23 +261,8 @@ loader.load(lowerModel, function ( gltf ) {
         // }
 
        }
-       progressHolder.addEventListener('click', function(e){
-        var progressTime = (e.offsetX/ progressBar.offsetWidth) * clip.duration;
-        animation.time = progressTime;
-  
-       })
-       var progressInt = setInterval(progressInc, 1)
-       function progressInc(){
-         if(isPlaying && !hasFinished){
-             if(animation.timeScale !=0){
-           
-           progressBar.style.width = meth * 100 + '%'
-         }
-        }
-         if(hasFinished && isPlaying){
-           progressBar.style.width = 0
-         }
-       }
+       
+      
        function animation_play(){
         if(isPlaying && !hasFinished){
           playmyAnim()
@@ -305,7 +294,26 @@ loader.load(lowerModel, function ( gltf ) {
     }
     } );
 
-  } );
+  },
+	// called while loading is progressing
+	function ( xhr ) {
+
+		console.log( ( xhr.loaded / xhr.total * 100 ));
+    var percentLoaded = xhr.loaded / xhr.total * 100
+    console.log(percentLoaded)
+    if(lowerBar){
+      //${(xhr.loader / xhr.total * 100)}%
+    lowerBar.setAttribute("style", `width:${percentLoaded}%;`)
+    } else {
+      console.log('Not Found')
+    }
+    },
+	// called when loading has errors
+	function ( error ) {
+
+		console.log( 'An error happened' );
+
+	} );
   loader.load(upperModel, function ( gltf ) {
     visiblity_control = setInterval(hideUpper, 1000)
     gltf.scene.scale.set(0.1,0.1,0.1)
@@ -367,13 +375,54 @@ loader.load(lowerModel, function ( gltf ) {
 }
     } );
 
-  } );
+  },
+	// called while loading is progressing
+	function ( xhr ) {
+    if(upperBar.offsetWidth == 100){
+      upperBar.setAttribute('style', 'background:#1a2238')
+      console.log('Error Not Found')
+    }
+		console.log( ( xhr.loaded / xhr.total * 100 ));
+    var percentLoaded = xhr.loaded / xhr.total * 100
+    console.log(percentLoaded)
+    if(upperBar){
+      //${(xhr.loader / xhr.total * 100)}%
+    upperBar.setAttribute("style", `width:${percentLoaded}%;`)
+    
+    } else {
+      console.log('Not Found')
+    }
+    },
+	// called when loading has errors
+	function ( error ) {
 
+		console.log( 'An error happened' );
+
+	} );
+  
+  
+// cholder.addEventListener('resize', function(){ 
+//   my_canvas.setAttribute("style", `max-height:${canvas_holder.offsetHeight}; max-width:${canvas_holder.offsetWidth} `);
+//   console.log('Window Resized')
+// }
+//)
+function responsewrtwidth(){
+  if(window.innerWidth >= 768){
+    responsivePane.className = 'right-pane'
+  } else {
+    responsivePane.className = 'lower-pane'
+  }
+}
+responsewrtwidth()
 window.addEventListener('resize', onWindowResize, false)
 function onWindowResize() {
-    //  camera.aspect = window.innerWidth / window.innerHeight
-    //  camera.updateProjectionMatrix()
-    // renderer.setSize(window.innerWidth, window.innerHeight)
+  responsewrtwidth()
+  
+  camera.aspect = cholder.offsetWidth / cholder.offsetHeight;
+  camera.updateProjectionMatrix();
+
+  renderer.setSize( cholder.offsetWidth, cholder.offsetHeight );
+    renderer.setPixelRatio(window.devicePixelRatio);
     render()
 }
 function animate() {

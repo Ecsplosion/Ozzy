@@ -1,9 +1,13 @@
 //import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.114/build/three.module.js';
+
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.118/build/three.module.js';
+import { DRACOLoader } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/DRACOLoader.js';
 import {OrbitControls} from 'https://cdn.jsdelivr.net/npm/three@0.118/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.118.1/examples/jsm/loaders/GLTFLoader.js';
 import { TWEEN } from 'https://cdn.jsdelivr.net/npm/three@0.118.1/examples/jsm/libs/tween.module.min.js'
 //Button Controls
+const upperBar = document.getElementById('upper-loader');
+const lowerBar = document.getElementById('lower-loader');
 const progressHolder= document.getElementById('progress-holder')
 const progressBar = document.getElementById('progress-bar')
 const canvas_holder = document.getElementById("cholder")
@@ -64,7 +68,7 @@ let fps = 25
 let seconds = 2
 let interval = 1/fps;
 var animation_speed = 1/15
-scene.background = new THREE.Color('black')
+scene.background = new THREE.Color('#e8e4e1')
 // const light = new THREE.SpotLight()
 // light.position.set(20, 20, 20)
 // scene.add(light)
@@ -201,8 +205,12 @@ playbackButton.addEventListener("click", function(){
 
    
 })
-camera.position.set(0,0,-142)
+const dracoLoader = new DRACOLoader();
 var loader = new GLTFLoader()
+dracoLoader.setDecoderPath( utils + 'draco/' );
+loader.setDRACOLoader( dracoLoader );
+camera.position.set(0,0,-142)
+
 loader.load(lowerModel, function ( gltf ) {
     visiblity_control = setInterval(hideLower, 1000) 
     gltf.scene.scale.set(0.1,0.1,0.1)
@@ -286,7 +294,26 @@ loader.load(lowerModel, function ( gltf ) {
     }
     } );
 
-  } );
+  },
+	// called while loading is progressing
+	function ( xhr ) {
+
+		console.log( ( xhr.loaded / xhr.total * 100 ));
+    var percentLoaded = xhr.loaded / xhr.total * 100
+    console.log(percentLoaded)
+    if(lowerBar){
+      //${(xhr.loader / xhr.total * 100)}%
+    lowerBar.setAttribute("style", `width:${percentLoaded}%;`)
+    } else {
+      console.log('Not Found')
+    }
+    },
+	// called when loading has errors
+	function ( error ) {
+
+		console.log( 'An error happened' );
+
+	} );
   loader.load(upperModel, function ( gltf ) {
     visiblity_control = setInterval(hideUpper, 1000)
     gltf.scene.scale.set(0.1,0.1,0.1)
@@ -348,7 +375,26 @@ loader.load(lowerModel, function ( gltf ) {
 }
     } );
 
-  } );
+  },
+	// called while loading is progressing
+	function ( xhr ) {
+		console.log( ( xhr.loaded / xhr.total * 100 ));
+    var percentLoaded = xhr.loaded / xhr.total * 100
+    console.log(percentLoaded)
+    if(upperBar){
+      //${(xhr.loader / xhr.total * 100)}%
+    upperBar.setAttribute("style", `width:${percentLoaded}%;`)
+    
+    } else {
+      console.log('Not Found')
+    }
+    },
+	// called when loading has errors
+	function ( error ) {
+
+		console.log( 'An error happened' );
+
+	} );
   
   
 // cholder.addEventListener('resize', function(){ 

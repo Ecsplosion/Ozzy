@@ -11,13 +11,32 @@ body{
 }
 header{
     z-index: 200;
-    border-bottom: 2px solid white;
     height: 60px;
     position: fixed;
     width: 100%;
     text-align: center;
     color: white;
     background-color: rgb(21, 28, 48);
+}
+#upper-loader{
+    margin-top: 0px;
+    z-index: 201;
+    height: 2px;
+    width: 0%;
+    color: white;
+    background: white;
+    border-radius: 50px;
+    border: none;
+}
+#lower-loader{
+    border: none;
+    margin-top: 0px;
+    z-index: 201;
+    height: 2px;
+    width: 0%;
+    color: white;
+    background: white;
+    border-radius: 50px;
 }
 header h2{
     margin-top: 15px;

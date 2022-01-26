@@ -11,7 +11,15 @@
 <body>
     <header>
         <h2>OzzySmile</h2>
+        <div style="width: 50%;float: left;">
+         <hr id="upper-loader">
+        </div>
+        <div style="width: 50%; margin-left: 50%;">
+          <hr id="lower-loader">
+        </div>
+   
     </header>
+ 
     <div class="container">
         <div class="canvas-holder" id="cholder">
             <canvas id="scene-canvas" style="width: 99%; height: 100%;" width="99%" height="100%">
@@ -52,9 +60,10 @@
         </div>
     </div>
     <script>
-      var lowerModel = "{% static 'media/sample/Lower24fps.glb' %}"
+      var lowerModel = "{% static 'media/sample/lower.glb' %}"
       
-      var upperModel = "{% static 'media/sample/Upper24fps.glb' %}"
+      var upperModel = "{% static 'media/sample/upper.glb' %}"
+      var utils = "{% static 'JS/'%}"
     </script>
     <script src="{% static 'JS/test.js' %}" type="module" ></script>
 </body>
