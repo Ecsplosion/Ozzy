@@ -1,7 +1,7 @@
 //import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.114/build/three.module.js';
 
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.118/build/three.module.js';
-// import { DRACOLoader } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/DRACOLoader.js';
+import { DRACOLoader } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/DRACOLoader.js';
 import {OrbitControls} from 'https://cdn.jsdelivr.net/npm/three@0.118/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.118.1/examples/jsm/loaders/GLTFLoader.js';
 import { TWEEN } from 'https://cdn.jsdelivr.net/npm/three@0.118.1/examples/jsm/libs/tween.module.min.js'
@@ -68,7 +68,8 @@ let fps = 25
 let seconds = 2
 let interval = 1/fps;
 var animation_speed = 1/15
-scene.background = new THREE.Color('#e8e4e1')
+scene.background = new THREE.Color('#1a2238')
+//White-ish Color: '#e8e4e1'
 // const light = new THREE.SpotLight()
 // light.position.set(20, 20, 20)
 // scene.add(light)
@@ -206,9 +207,9 @@ playbackButton.addEventListener("click", function(){
    
 })
 var loader = new GLTFLoader()
-// const dracoLoader = new DRACOLoader();
-// dracoLoader.setDecoderPath( utils + 'draco/' );
-// loader.setDRACOLoader( dracoLoader );
+const dracoLoader = new DRACOLoader();
+dracoLoader.setDecoderPath( utils + 'draco/' );
+loader.setDRACOLoader( dracoLoader );
 camera.position.set(0,0,-142)
 
 loader.load(lowerModel, function ( gltf ) {
