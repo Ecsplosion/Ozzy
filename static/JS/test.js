@@ -1,7 +1,7 @@
 //import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.114/build/three.module.js';
 
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.118/build/three.module.js';
-import { DRACOLoader } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/DRACOLoader.js';
+// import { DRACOLoader } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/DRACOLoader.js';
 import {OrbitControls} from 'https://cdn.jsdelivr.net/npm/three@0.118/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.118.1/examples/jsm/loaders/GLTFLoader.js';
 import { TWEEN } from 'https://cdn.jsdelivr.net/npm/three@0.118.1/examples/jsm/libs/tween.module.min.js'
@@ -205,10 +205,10 @@ playbackButton.addEventListener("click", function(){
 
    
 })
-const dracoLoader = new DRACOLoader();
 var loader = new GLTFLoader()
-dracoLoader.setDecoderPath( utils + 'draco/' );
-loader.setDRACOLoader( dracoLoader );
+// const dracoLoader = new DRACOLoader();
+// dracoLoader.setDecoderPath( utils + 'draco/' );
+// loader.setDRACOLoader( dracoLoader );
 camera.position.set(0,0,-142)
 
 loader.load(lowerModel, function ( gltf ) {
@@ -250,7 +250,7 @@ loader.load(lowerModel, function ( gltf ) {
         animation.clampWhenFinished = true;
         animation.timeScale = animation_speed
    
-          animation.play()
+          animation.setDuration(2).play()
         // var interval1 = setInterval(belowFunc,500)
         // function belowFunc(){
         //   animation.timeScale = 0
@@ -286,11 +286,6 @@ loader.load(lowerModel, function ( gltf ) {
           }
 
         }
-
-        
-        
-       
-      
     }
     } );
 
@@ -346,7 +341,7 @@ loader.load(lowerModel, function ( gltf ) {
     animation.setLoop(THREE.LoopOnce)
     animation.clampWhenFinished = true;
     animation.timeScale = animation_speed
-    animation.play()
+    animation.setDuration(2).play()
 
    }
    function animation_play(){
