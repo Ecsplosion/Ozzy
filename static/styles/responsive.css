@@ -5,9 +5,12 @@
     padding: 0;
 }
 body{
+    position: relative;
     background-color: rgb(26, 34, 56);
     margin: 0;
     padding: 0;
+    height: 100vh;
+    overflow: hidden;
 }
 header{
     z-index: 200;
@@ -47,6 +50,7 @@ header h2{
     margin-top: 60px;
     float: left;
     padding: 2px;
+
 }
 .canvas-holder{
     position: relative;
@@ -116,6 +120,51 @@ header h2{
   .lower-menu hr{
       display: none;
   }
+  .menu{
+      transition: all 0.3s ease-in;
+      color: white;
+      position: absolute;
+      bottom: -80px;
+      width: 100%;
+      height: 100px;
+      text-align: center;
+  }
+  .menu-head{
+      width: 100%;
+      background-color: rgb(18, 23, 37);
+      border-bottom:1px solid white ;
+  }
+  .menu-head button{
+      border: none;
+      background:none;
+      width: 100%;
+      color: white;
+  }
+  .menu-body{
+      margin: 0 auto;
+      width: 100%;
+      background-color: rgb(32, 41, 66);
+  }
+  .menu-body button{
+
+        width: 50%;
+        height: 50px;
+      border: none;
+      color: white;
+      background:none;
+  }
+  .menu-body button:hover{
+      background-color: rgb(46, 57, 88);
+  }
+  #ipr-button{
+      float: left;
+  }
+  #review-case{
+      float: right;
+  }
+  #ipr-button-pc{
+      display: none;
+  }
   @media only screen and (min-width: 768px) {
     .container{
         height: 100vh;
@@ -135,7 +184,7 @@ header h2{
         height: 100%;
     }
     .right-pane{
-        margin-top: 10px;
+        margin-top: 0px;
         width: 17.2%;
         float: right;
         margin-right: 10px;
@@ -146,36 +195,42 @@ header h2{
         height: 30px;
     }
     .camera-button-list{
-        max-width: 180px;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        align-content: space-around;
-        justify-content: center;
-        align-items: center;
+        max-width: 96px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: space-around;
+    justify-content: center;
+    align-items: center;
     }    
     .camera-button-list li{
         float: left;
-        margin: 10px 0;
+        margin: 8px 0;
     }
     .camera-button img{
-        width: 100%;
-    height: 50px;
-    min-width: 91px;
+        width: 60px;
+    height: 40px;
+
     }
     .lower-menu{
         display: flex;
-        min-width: 180px;
+        min-width: 130px;
         flex-direction: column;
         flex-wrap: nowrap;
         align-items: center;
         align-content: space-around;
         justify-content: center;
     }
+    #ipr-button-pc{
+        display: block;        
+        background: white;
+        border: 1px solid white;
+        color: black;
+        padding: 10px;
+        font-size: 20px;
+    }
     #playback-button{
         margin: 0;
-        
-        
     }
     .visibility-control{
         min-width: 180px;
@@ -190,5 +245,8 @@ header h2{
         width: 100px;
         margin-top: 5px;
         display: block;
+    }
+    .menu{
+        display: none;
     }
     }

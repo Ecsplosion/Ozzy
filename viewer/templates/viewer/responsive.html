@@ -35,8 +35,9 @@
                     <li><button id="right_view" class="camera-button"><img src="{% static 'media/viewer_buttons/right.jpg' %}" >  </button></li>
                       <li><button id="upper_view" class="camera-button"><img src="{% static 'media/viewer_buttons/upper.jpg' %}"  ></button></li>
                       <li><button id="lower_view" class="camera-button"><img style="transform: scaleY(-1);" src="{% static 'media/viewer_buttons/upper.jpg' %}"  ></button></li>
+                      <li><button id="ipr-button-pc" class="camera-button">IPR</button></li>
                 </li>
-              </ul> <br>
+              </ul> 
               <div class="lower-menu" >
                    <div class="play-pause-menu">
                 <button style="z-index: 100000;" id="playback-button" class="play"></button>
@@ -45,12 +46,12 @@
               <ul class="visibility-control">
  
                   <li> <div class="showUp"  style="max-width: 80px;">
-                    <label style="float: right; font-size: 20px; color: white;" for="show-upper">Upper</label>
+                    <label style="float: right; font-size: 18px; color: white;" for="show-upper">Upper</label>
                     <input style='float: left; width: 18px; margin-top: 5px;'type="checkbox" id='show-upper'value="show-upper" name="show-upper" >
                     </div>
                 </li>
                   <li> <div class="showLow" style="max-width: 80px;">
-                    <label style="float: right;font-size: 20px; color: white;" for="show-lower">Lower</label>
+                    <label style="float: right;font-size: 18px; color: white;" for="show-lower">Lower</label>
                     <input style='float:left; width: 18px;margin-top: 5px;'type="checkbox" id='show-lower' value="show-lower" name="show-lower" >
                       </div></li>
               </ul>
@@ -59,6 +60,16 @@
         </div>
         </div>
     </div>
+    <div class="menu">
+      <div class="menu-head">
+        <button id="more-options"><h4>More Options</h4></button>
+      </div>
+      <div class="menu-body">
+        <button id="ipr-button">IPR</button>
+        <button id='review-case'>Review Case</button>
+      </div>
+    </div>
+    <script src="{% static  'JS/menu.js' %}"></script>
     <script>
       var lowerModel = "{% static 'media/sample/lower_draco.glb' %}"
       
