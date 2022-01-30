@@ -73,7 +73,7 @@ header h2{
 }
 .camera-button-list{
     list-style-type: none;
-    width: 255px;
+    width: 310px;
     margin: 0 auto;
 }
 .camera-button-list li{
@@ -166,7 +166,45 @@ header h2{
       float: right;
   }
   #ipr-button-pc{
+      display: block;
+      padding: 10px;
+    background: white;
+    border: none;
+  }
+  .ipr-modal{
+      position: absolute;
       display: none;
+      top: 40px;
+      left: 5px;
+      width: 95%;
+      height: 85vh;
+      border: none;
+      background:rgb(46, 57, 88) ;
+  }
+  .modal-body{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 40px;
+    height: 80%;
+  }
+  .modal-header{
+    float: left;
+    width: 100%;
+    height: 30px;
+    text-align: left;
+    background:rgb(17 ,21, 31);
+  }
+  #modal-close-button{
+    background: none;
+    border: none;
+    font-size: 22px;
+    margin-top: 0;
+    margin-left: 10px;
+    color: white;
+  }
+  .modal-body img{
+      width: 100%;
+      height: 68vh;
   }
   @media only screen and (min-width: 768px) {
     .container{
@@ -251,5 +289,8 @@ header h2{
     }
     .menu{
         display: none;
+    }
+    .right-pane{
+        height: 80vh;
     }
     }

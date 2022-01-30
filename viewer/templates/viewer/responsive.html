@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3d Viewer</title>
+    
     <link rel="stylesheet" href="{% static 'styles/responsive.css' %}" class="css">
 </head>
 <body>
@@ -69,13 +70,24 @@
         <button id='review-case'>Review Case</button>
       </div>
     </div>
-    <script src="{% static  'JS/menu.js' %}"></script>
+    <div class="ipr-modal">
+      <div class="modal-header">
+        <button id="modal-close-button">←</button>
+      </div>
+      <div class="modal-body">
+        <img src="{% static 'media/IPR.jpg' %}">
+      </div>
+     
+    </div>
+
     <script>
       var lowerModel = "{% static 'media/sample/lower_draco.glb' %}"
       
       var upperModel = "{% static 'media/sample/upper_draco.glb' %}"
       var utils = "{% static 'JS/'%}"
+      
     </script>
+    <script src="{% static  'JS/menu.js' %}"></script>
     <script src="{% static 'JS/test.js' %}" type="module" ></script>
 </body>
 </html>
