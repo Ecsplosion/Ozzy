@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3d Viewer</title>
+    
+    <link rel="stylesheet" href="{% static 'styles/responsive.css' %}" class="css">
+    <link rel="stylesheet" href="{% static 'styles/submit-case.css' %}" class="css">
+</head>
+<body>
+    <header>
+
+        <div style="width: 50%;float: left;">
+         <hr id="upper-loader">
+        </div>
+        <div style="width: 50%; margin-left: 50%;">
+          <hr id="lower-loader">
+        </div>
+        <div class="header-items">
+            <h4 id="username">{{request.user}}</h4>
+            <h4 style="width: 100px; margin: 0 auto;">OzzySmile</h4>
+
+    </div>
+    </header>
+ 
+    <div class="container">
+    <div class="form-outerbody">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-innerbody">
+                <div class="labels">
+                    <h4>Upper Model</h4>
+                    <h4>Lower Model</h4>
+                    <h4>IPR FORM</h4>     
+                </div>
+                <div class="input-fields">
+                    {{form.upper_model}}
+                    {{form.lower_model}}
+                    {{form.ipr_form}}
+                <!-- <input name="upper-model" type="file" value="Upper Model">
+                <input name="lower-model"type="file" value="Lower Model">
+                <input name="ipr-form" type="file" value="IPR Form"> -->
+                <script src="{% static 'JS/input-empty.js' %}"></script>
+                </div> 
+            </div>
+            <div class="form-footer">
+            <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+    </div>
+    <script src="{% static  'JS/menu.js' %}"></script>
+</body>
+</html>

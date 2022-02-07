@@ -1,0 +1,319 @@
+*{
+    overflow-x: hidden;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+body{
+    position: relative;
+    background-color: rgb(26, 34, 56);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+header{
+    z-index: 200;
+    height: 35px;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    color: white;
+    background-color: rgb(21, 28, 48);
+}
+header h4{
+    margin-top: 5px;
+}
+#upper-loader{
+    margin-top: 0px;
+    z-index: 201;
+    height: 2px;
+    width: 0%;
+    color: white;
+    background: white;
+    border-radius: 50px;
+    border: none;
+}
+#lower-loader{
+    border: none;
+    margin-top: 0px;
+    z-index: 201;
+    height: 2px;
+    width: 0%;
+    color: white;
+    background: white;
+    border-radius: 50px;
+}
+header h2{
+    margin-top: 15px;
+}
+.container{
+    width: 100%;
+    height: 100vh;
+    margin-top: 30px;
+    float: left;
+    padding: 2px;
+
+}
+.progress-bar{
+    float: left;
+    width: 0%;
+    height: 10px;
+    background-color: orangered;
+}
+.progress-holder{
+    width: 100%;
+    position: relative;
+    height: 20px;
+}
+
+.canvas-holder{
+    position: relative;
+    width: 95%;
+    margin: 0px auto;
+    height: 50%;
+}
+.bar-holder{
+    position: relative;
+    width: 95%;
+    margin: 0px auto;
+    height: 8%;
+}
+#bar-canvas{
+    width: 99%;
+    height: 100%;
+    background-color: rgb(16, 30, 68);
+}
+#scene-canvas{
+
+    width: 99%;
+    height: 100%;
+    background-color: rgb(16, 30, 68);
+}
+.camera-button img{
+    width: 30px;
+    height: 30px;
+}
+.camera-button-list{
+    list-style-type: none;
+    width: 310px;
+    margin: 0 auto;
+}
+.camera-button-list li{
+    float:  left;
+    margin: 0 8px;
+}
+.lower-menu{
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+    max-width: 233px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.visibility-control{
+    width: 37%;
+
+}
+.visibility-control li{
+    margin-top: 10px;
+    
+}
+.play-pause-menu{
+    width: 50%;
+    height: 54px;
+    border-right: 2px solid rgb(32, 41, 66);
+
+}
+.play-pause-menu button{
+    width: 25px;
+    margin: 10px auto;
+    margin-left: 35px;
+}
+#playback-button{
+    background: none;
+    border: none;
+    content: url("./play_button.7d6ea54043d9.png");
+  }
+  .pause:before{
+    content: url("./pause_button.a0540b40aaee.png");
+  }
+  .play:before{
+    content: url("./play_button.7d6ea54043d9.png");
+  }
+  .lower-menu hr{
+      display: none;
+  }
+  .menu{
+      transition: all 0.3s ease-in;
+      color: white;
+      position: absolute;
+      bottom: -80px;
+      width: 100%;
+      height: 100px;
+      text-align: center;
+  }
+  .menu-head{
+      width: 100%;
+      background-color: rgb(18, 23, 37);
+      border-bottom:1px solid white ;
+  }
+  .menu-head button{
+      border: none;
+      background:none;
+      width: 100%;
+      color: white;
+  }
+  .menu-body{
+      margin: 0 auto;
+      width: 100%;
+      background-color: rgb(32, 41, 66);
+  }
+  .menu-body button{
+
+        width: 50%;
+        height: 50px;
+      border: none;
+      color: white;
+      background:none;
+  }
+  .menu-body button:hover{
+      background-color: rgb(46, 57, 88);
+  }
+  #ipr-button{
+      float: left;
+  }
+  #review-case{
+      float: right;
+  }
+  #ipr-button-pc{
+      display: block;
+      padding: 10px;
+    background: white;
+    border: none;
+  }
+  .ipr-modal{
+      position: absolute;
+      display: none;
+      top: 40px;
+      left: 5px;
+      width: 95%;
+      height: 85vh;
+      border: none;
+      background:rgb(46, 57, 88) ;
+  }
+  .modal-body{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 40px;
+    height: 80%;
+  }
+  .modal-header{
+    float: left;
+    width: 100%;
+    height: 30px;
+    text-align: left;
+    background:rgb(17 ,21, 31);
+  }
+  #modal-close-button{
+    background: none;
+    border: none;
+    font-size: 22px;
+    margin-top: 0;
+    margin-left: 10px;
+    color: white;
+  }
+  .modal-body img{
+      width: 100%;
+      height: 68vh;
+  }
+  @media only screen and (min-width: 768px) {
+    .container{
+        height: 100vh;
+        width: 100%;
+        float: left;
+        padding: 2px;
+        margin-top: 70px;
+    }
+    .canvas-holder{
+        float: left;
+        height: 80%;
+        width: 80%;
+        margin-left: 10px;
+    }
+    #scene-canvas{
+        width: 100%;
+        height: 100%;
+    }
+    .right-pane{
+        margin-top: 0px;
+        width: 17.2%;
+        float: right;
+        margin-right: 10px;
+    }
+    .play-pause-menu{
+        border: none;
+        width: 25px;
+        height: 30px;
+    }
+    .camera-button-list{
+        max-width: 96px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: space-around;
+    justify-content: center;
+    align-items: center;
+    }    
+    .camera-button-list li{
+        float: left;
+        margin: 8px 0;
+    }
+    .camera-button img{
+        width: 60px;
+    height: 40px;
+
+    }
+    .lower-menu{
+        display: flex;
+        min-width: 130px;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        align-content: space-around;
+        justify-content: center;
+    }
+    #ipr-button-pc{
+        display: block;        
+        background: white;
+        border: 1px solid white;
+        color: black;
+        padding: 10px;
+        font-size: 20px;
+    }
+    #playback-button{
+        margin: 0;
+    }
+    .visibility-control{
+        min-width: 180px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    }
+    .lower-menu hr{
+        width: 100px;
+        margin-top: 5px;
+        display: block;
+    }
+    .menu{
+        display: none;
+    }
+    .right-pane{
+        height: 80vh;
+    }
+    }

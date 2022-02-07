@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3d Viewer</title>
+    
+    <link rel="stylesheet" href="{% static 'styles/responsive.css' %}" class="css">
+    <link rel="stylesheet" href="{% static 'styles/submit-case.css' %}" class="css">
+</head>
+<style>
+    .form-innerbody input{
+        margin-top: 20px;
+        height: 30px;
+        background-color: white;
+        border-radius: 10px;
+        border: 1px solid white;
+        outline: none;
+    }
+    .form-innerbody{
+        width: 205px;
+        margin: 0 auto;
+    }
+</style>
+<body>
+    <header>
+
+        <div style="width: 50%;float: left;">
+         <hr id="upper-loader">
+        </div>
+        <div style="width: 50%; margin-left: 50%;">
+          <hr id="lower-loader">
+        </div>
+        <div class="header-items">
+            <h4 id="username">{{request.user}}</h4>
+            <h4 style="width: 100px; margin: 0 auto;">OzzySmile</h4>
+
+    </div>
+
+    </header>
+ 
+    <div class="container">
+    <div class="form-outerbody">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-innerbody">
+               
+                <input name="username" type="text" placeholder="Username">
+                <input name="password"type="password" placeholder="Password">
+                
+                </div>
+            <div class="form-footer">
+            <input type="submit" value="Login">
+            </div>
+        </form>
+    </div>
+    </div>
+    <script src="{% static  'JS/menu.js' %}"></script>
+</body>
+</html>

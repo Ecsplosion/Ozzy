@@ -55,11 +55,34 @@ header h2{
     padding: 2px;
 
 }
+.progress-bar{
+    float: left;
+    width: 0%;
+    height: 10px;
+    background-color: orangered;
+}
+.progress-holder{
+    width: 100%;
+    position: relative;
+    height: 20px;
+}
+
 .canvas-holder{
     position: relative;
     width: 95%;
     margin: 0px auto;
     height: 50%;
+}
+.bar-holder{
+    position: relative;
+    width: 95%;
+    margin: 0px auto;
+    height: 8%;
+}
+#bar-canvas{
+    width: 99%;
+    height: 100%;
+    background-color: rgb(16, 30, 68);
 }
 #scene-canvas{
 

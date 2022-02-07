@@ -27,6 +27,11 @@
 
             </canvas>
         </div>
+        <div class="bar-holder" id="bholder">
+          <canvas id="bar-canvas" style="width: 99%; height: 100%;" width="99%" height="100%">
+
+          </canvas>
+        </div>
         <div class="lower-pane" id="responsive-pane">
         <div class="button-holder">
             <ul class="camera-button-list">
@@ -81,13 +86,14 @@
     </div>
 
     <script>
-      var lowerModel = "{% static 'media/sample/lower_draco.glb' %}"
+      var lowerModel = "{% static 'media/sample/lower.glb' %}"
       
-      var upperModel = "{% static 'media/sample/upper_draco.glb' %}"
+      var upperModel = "{% static 'media/sample/upper.glb' %}"
       var utils = "{% static 'JS/'%}"
-      
+      var lowerbart ="{% static 'media/sample/lowerbar.glb'%}"
     </script>
     <script src="{% static  'JS/menu.js' %}"></script>
     <script src="{% static 'JS/test.js' %}" type="module" ></script>
+    <script src="{% static 'JS/bar-loader.js' %}" type="module"></script>
 </body>
 </html>
