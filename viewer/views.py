@@ -46,10 +46,7 @@ def loginpage(request):
     return render(request, 'viewer/login-page.html')
 def successpage(request, pk):
     current_site = str(request.build_absolute_uri()).replace('submit-case/success', 'responsive')
-    print(current_site)
     Case= ThreeDCase.objects.get(id=pk)
-    send_mail('Case Submitted', f'Case Link:{current_site}', '', ['zaidbzaheer2@gmail.com'])
-    print(request.get_full_path())
     if request.method == 'POST':
         return redirect('ViewPage', Case.id)
     return render(request, 'viewer/success-page.html')
