@@ -24,6 +24,7 @@ ALLOWED_HOSTS = ['ozzysmile.herokuapp.com', '127.0.0.1','localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,8 +39,14 @@ INSTALLED_APPS = [
     'froala_editor',
     'rest_framework'
 ]
-
+CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOWED_ORIGINS = [
+#     "https://ozzysmile.herokuapp.com",
+#     "http://localhost:8000",
+#     "http://127.0.0.1:8000"
+# ]
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
      'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
