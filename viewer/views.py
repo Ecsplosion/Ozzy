@@ -1,10 +1,13 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from django.contrib.auth.decorators import login_required
 from . models import ThreeDCase
 from . forms import ThreeDCaseForm
 from django.core.mail import send_mail
+from . serializers import glbSerializer
 # Create your views here.
 
 def viewerpage(request):
@@ -50,3 +53,11 @@ def successpage(request, pk):
     if request.method == 'POST':
         return redirect('ViewPage', Case.id)
     return render(request, 'viewer/success-page.html')
+class ViewData(APIView):
+    try:
+        def get(self,request,format=None, *args, **kwargs):
+            glb_models = ThreeDCase.objects.get(id=kwargs['pk'])
+            serializer = glbSerializer(glb_models, many=False)
+            return Response(serializer.data)
+    except Exception as e:
+        print(e)

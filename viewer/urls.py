@@ -7,5 +7,6 @@ urlpatterns = [
     path('responsive/<str:pk>/', views.viewpage, name='ViewPage'),
     path('submit-case/', views.submitcase, name='SubmitFormPage'),
     path('login/', views.loginpage, name='CaseLoginPage'),
-    path('submit-case/success/<str:pk>/', views.successpage, name='SuccessPage')
+    path('submit-case/success/<str:pk>/', views.successpage, name='SuccessPage'),
+    path('api/viewer/data/<str:pk>/', views.ViewData.as_view(), name='model-data')
 ]
