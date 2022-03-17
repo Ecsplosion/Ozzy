@@ -39,12 +39,12 @@ INSTALLED_APPS = [
     'froala_editor',
     'rest_framework'
 ]
-# CORS_ORIGIN_ALLOW_ALL= True
-CORS_ALLOWED_ORIGINS = [
-    "https://ozzysmile.herokuapp.com",
-    "http://localhost:8000",
-    "http://127.0.0.1:8000"
-]
+CORS_ORIGIN_ALLOW_ALL= True
+# CORS_ALLOWED_ORIGINS = [
+#     "https://ozzysmile.herokuapp.com",
+#     "http://localhost:8000",
+#     "http://127.0.0.1:8000"
+# ]
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
