@@ -1,5 +1,3 @@
-from operator import mod
-from pyexpat import model
 from django.db import models
 import uuid
 from django.contrib.auth.models import User

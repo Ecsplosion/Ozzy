@@ -1,6 +1,7 @@
 
 import os
 from pathlib import Path
+from pickle import FALSE
 import django_heroku
 import dj_database_url
 from decouple import config
@@ -15,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*yh+^e&lwi7(c9s49*e!$70gd8kp&9m==hgo6npckv!pp%5!61'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
 ALLOWED_HOSTS = ['ozzysmile.herokuapp.com', '127.0.0.1','localhost']
@@ -48,7 +49,7 @@ CORS_ORIGIN_ALLOW_ALL= True
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
