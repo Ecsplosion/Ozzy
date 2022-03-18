@@ -10,3 +10,5 @@ class ThreeDCase(models.Model):
     upper_model = models.FileField(null=True, blank=True)
     lower_model = models.FileField(null=True, blank=True)
     ipr_form = models.FileField(null=True, blank=True)
+    def __str__(self):
+        return self.upper_model.name
